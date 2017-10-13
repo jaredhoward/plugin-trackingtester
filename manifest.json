@@ -11,7 +11,7 @@
   "icons": {
     "255": "150320_Rakuten.png"
   },
-  "permissions": ["background", "tabs", "activeTab", "webRequest", "webRequestBlocking", "<all_urls>"],
+  "permissions": ["background", "tabs", "webRequest", "webRequestBlocking", "<all_urls>"],
   "background": {
     "persistent": true,
     "scripts": ["background.js"]
