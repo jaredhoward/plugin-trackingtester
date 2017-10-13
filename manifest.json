@@ -7,5 +7,12 @@
     "default_icon": "150320_Rakuten.png",
     "default_popup": "popup.html",
     "default_title": "Rakuten Marketing"
-  }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "webNavigation",
+    "activeTab"
+  ]
 }
