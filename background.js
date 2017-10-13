@@ -1,6 +1,7 @@
 'use strict';
 
 var requests = [];
+var current = "rakuten1";
 
 //chrome.webNavigation.onCompleted.addListener(function(){
 //    //alert('hello')
@@ -9,6 +10,9 @@ var requests = [];
 chrome.webRequest.onCompleted.addListener(function(req) {
     var re = /type=([^&])/
     var found = req.url.match(re)
+
+    current = "150320_rakuten";
+    updateIcon();
 
     var txt, req_type;
     if (req.url.match(/\/imp\?/)) {
@@ -33,3 +37,7 @@ chrome.webRequest.onCompleted.addListener(function(req) {
     "*://tags.rd.linksynergy.com/*",
     "*://tags.mediaforge.com/*",
 ]}, []);
+
+function updateIcon() {
+    chrome.browserAction.setIcon({path: current + ".png"});
+}
