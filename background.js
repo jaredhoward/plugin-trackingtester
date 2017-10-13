@@ -1,10 +1,6 @@
 'use strict';
 
-var ad_pixels = [],
-    visits = [],
-    unknown_requests = [],
-    requests = [];
-
+var requests = [];
 
 //chrome.webNavigation.onCompleted.addListener(function(){
 //    //alert('hello')
@@ -33,23 +29,7 @@ chrome.webRequest.onCompleted.addListener(function(req) {
 
     requests.push({reqtype: req_type, url: req.url, text: txt});
 
-    switch(req_type) {
-        case "pixel":
-            ad_pixels.push(req.url);
-            break;
-        case "visit":
-            visits.push(req.url);
-            break;
-        default:
-            unknown_requests.push(req.url);
-    }
 }, {urls: [
     "*://tags.rd.linksynergy.com/*",
     "*://tags.mediaforge.com/*",
 ]}, []);
-
-chrome.extension.onConnect.addListener(function(port) {
-    port.onMessage.addListener(function(msg) {
-        port.postMessage(requests);
-    });
-})
